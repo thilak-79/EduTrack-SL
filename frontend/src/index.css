@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased font-sans min-h-screen;
+  }
+}
+
+/* Slick Custom Glassmorphism / Gradient Accents */
+.school-gradient {
+  background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 50%, #3b82f6 100%);
+}
+
+.school-card-hover {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/50;
+}
+
+/* Fade In Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ================= PRINT STYLESHEET ================= */
+@media print {
+  /* Hide administrative sidebars, headers, action buttons, and selectors */
+  .no-print, 
+  nav, 
+  aside, 
+  header, 
+  button, 
+  .language-selector,
+  .action-buttons,
+  .filters-container {
+    display: none !important;
+  }
+
+  /* Make sure background is white and text is pitch black */
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt !important;
+  }
+
+  /* Make containers fit exactly on page width */
+  .print-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Official school document border card styling */
+  .print-report-card {
+    border: 2px solid #000000 !important;
+    padding: 20px !important;
+    margin-top: 10px !important;
+    border-radius: 0px !important;
+  }
+
+  /* Table styling for printers */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 15px !important;
+  }
+
+  th, td {
+    border: 1px solid #000000 !important;
+    padding: 8px !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    text-align: left !important;
+  }
+
+  th {
+    background-color: #f1f5f9 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Force display of elements marked strictly for printing */
+  .print-only {
+    display: block !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 15mm;
+  }
+}
